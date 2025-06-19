@@ -1,0 +1,52 @@
+{
+  "name": "hvac-visualization-system",
+  "version": "1.0.0",
+  "description": "HVAC系统数据可视化大屏项目",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "preview": "vite preview",
+    "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
+    "streamlit": "cd streamlit-dashboard && streamlit run app.py"
+  },
+  "dependencies": {
+    "@react-three/drei": "^9.93.0",
+    "@react-three/fiber": "^8.15.12",
+    "@tanstack/react-query": "^5.14.2",
+    "antd": "^5.12.8",
+    "axios": "^1.6.2",
+    "d3": "^7.8.5",
+    "dayjs": "^1.11.10",
+    "dexie": "^4.0.11",
+    "echarts": "^5.4.3",
+    "echarts-for-react": "^3.0.2",
+    "framer-motion": "^10.16.16",
+    "lodash": "^4.17.21",
+    "react": "^18.2.0",
+    "react-color": "^2.19.3",
+    "react-dom": "^18.2.0",
+    "react-grid-layout": "^1.4.4",
+    "react-router-dom": "^6.20.1",
+    "socket.io-client": "^4.7.4",
+    "styled-components": "^6.1.6",
+    "three": "^0.159.0",
+    "zustand": "^4.5.7"
+  },
+  "devDependencies": {
+    "@types/d3": "^7.4.3",
+    "@types/lodash": "^4.14.202",
+    "@types/react": "^18.2.43",
+    "@types/react-dom": "^18.2.17",
+    "@types/three": "^0.159.0",
+    "@typescript-eslint/eslint-plugin": "^6.14.0",
+    "@typescript-eslint/parser": "^6.14.0",
+    "@vitejs/plugin-react": "^4.2.1",
+    "eslint": "^8.55.0",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "eslint-plugin-react-refresh": "^0.4.5",
+    "sass": "^1.69.5",
+    "typescript": "^5.2.2",
+    "vite": "^5.0.8"
+  }
+}
