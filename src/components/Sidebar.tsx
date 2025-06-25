@@ -114,10 +114,10 @@ const Sidebar: React.FC = () => {
         </div>
 
         {/* 系统信息 */}
-        <div style={{ fontSize: "12px", color: colors.text.tertiary }}>
+        {/* <div style={{ fontSize: "12px", color: colors.text.tertiary }}>
           <div>版本: v1.0.0</div>
           <div>© 2024 HVAC System</div>
-        </div>
+        </div> */}
       </div>
     </Sider>
   );
