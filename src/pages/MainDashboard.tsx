@@ -12,6 +12,7 @@ import AlertPanel from "../components/widgets/AlertPanel";
 import RealTimeData from "../components/widgets/RealTimeData";
 import TemplateSelector from "../components/TemplateSelector";
 import { useHVACStore } from "../store/hvacStore";
+import { useThemeStore } from "@/store/themeStore";
 // import "./MainDashboard.css";
 
 const { Option } = Select;
@@ -21,6 +22,8 @@ const MainDashboard: React.FC = () => {
   const [isRealTime, setIsRealTime] = useState(true);
   const [refreshInterval, setRefreshInterval] = useState(5000);
 
+
+  const colors = useThemeStore()
   const {
     hvacData,
     isLoading,
@@ -113,15 +116,15 @@ const MainDashboard: React.FC = () => {
   };
 
   return (
-    <div className="dashboard-container">
+    <div className="dashboard-container" style={{ color:colors.colors.text.primary}}>
       <div className="dashboard-header">
         <Row
           justify="space-between"
           align="middle"
-          style={{ marginBottom: 24 }}
+          style={{ marginBottom: 24 ,color:colors.colors.text.primary}}
         >
           <Col>
-            <h1 style={{ color: "#fff", margin: 0 }}>HVAC 数据可视化大屏</h1>
+            <h1 style={{ margin: 0 , color:colors.colors.text.primary}}>HVAC 数据可视化大屏</h1>
           </Col>
           <Col>
             <Space size="large">
@@ -131,7 +134,7 @@ const MainDashboard: React.FC = () => {
                 onTemplateChange={handleTemplateChange}
               />
               <Space>
-                <span style={{ color: "#fff" }}>实时更新:</span>
+                <span style={{ color:colors.colors.text.primary }}>实时更新:</span>
                 <Switch
                   checked={isRealTime}
                   onChange={handleRealTimeToggle}
