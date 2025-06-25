@@ -5,7 +5,8 @@ import MainDashboard from "./pages/MainDashboard";
 import TemplateManager from "./pages/TemplateManager";
 import DataConfig from "./pages/DataConfig";
 import HVACControl from "./pages/HVACControl";
-import Sidebar from "./components/Sidebar";
+// import Sidebar from "./components/Sidebar";
+import SideDataBar from "./components/SiderDataBar";
 import FractalBackground from "./components/FractalBackground";
 import { useThemeStore } from "./store/themeStore";
 import "./App.css";
@@ -24,8 +25,8 @@ const App: React.FC = () => {
   return (
     <div className="App">
       <FractalBackground />
-      <Layout style={{ minHeight: "100vh", background: "transparent" }}>
-        <Sidebar />
+      <Layout style={{ minHeight: "100vh", background: "transparent",overflow: "scroll" }}>
+        <SideDataBar />
         <Layout>
           <Content
             style={{

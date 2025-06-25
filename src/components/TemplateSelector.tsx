@@ -1,6 +1,7 @@
 import React from "react";
 import { Select, Card, Row, Col, Button } from "antd";
 import { AppstoreOutlined, EyeOutlined } from "@ant-design/icons";
+import { useThemeStore } from "@/store/themeStore";
 
 const { Option } = Select;
 
@@ -68,10 +69,12 @@ const TemplateSelector: React.FC<TemplateSelectorProps> = ({
     },
   };
 
+  const colors = useThemeStore()
+
   return (
     <div style={{ display: "flex", alignItems: "center", gap: "12px" }}>
-      <AppstoreOutlined style={{ color: "#fff", fontSize: "16px" }} />
-      <span style={{ color: "#fff", fontSize: "14px" }}>模板:</span>
+      <AppstoreOutlined style={{color: colors.colors.text.primary, fontSize: "16px" }} />
+      <span style={{ color: colors.colors.text.primary, fontSize: "14px" }}>模板:</span>
       <Select
         value={selectedTemplate}
         onChange={onTemplateChange}
@@ -81,7 +84,7 @@ const TemplateSelector: React.FC<TemplateSelectorProps> = ({
             {menu}
             <div style={{ padding: "8px", borderTop: "1px solid #f0f0f0" }}>
               <Row gutter={[8, 8]}>
-                {templates.map((template) => {
+                {/* {templates.map((template) => {
                   const info =
                     templateInfo[template as keyof typeof templateInfo];
                   return (
@@ -122,7 +125,7 @@ const TemplateSelector: React.FC<TemplateSelectorProps> = ({
                       </Card>
                     </Col>
                   );
-                })}
+                })} */}
               </Row>
             </div>
           </div>
@@ -145,8 +148,9 @@ const TemplateSelector: React.FC<TemplateSelectorProps> = ({
       <Button
         type="text"
         icon={<EyeOutlined />}
-        style={{ color: "#fff" }}
+        style={{ color: colors.colors.text.primary, }}
         size="small"
+
       >
         预览
       </Button>

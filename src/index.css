@@ -14,11 +14,11 @@ body {
   -moz-osx-font-smoothing: grayscale;
   background: linear-gradient(135deg, #0c1c3c 0%, #1a2942 100%);
   color: #ffffff;
-  overflow: hidden;
+  overflow: scroll;
 }
 
 #root {
-  height: 100vh;
+  /* height: 100vh; */
   width: 100vw;
 }
 

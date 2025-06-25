@@ -1,0 +1,66 @@
+# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+
+# dependencies
+/node_modules
+
+# production
+/build
+
+# misc
+.DS_Store
+*.pem
+
+# local env files
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# editor directories and files
+.vscode/
+!.vscode/extensions.json
+.idea/
+*.code-workspace
+*.sublime-project
+*.sublime-workspace
+.project
+.classpath
+.c9/
+*.launch
+.settings/
+*.sublime-workspace
+
+# Vite specific ignores
+.vite/
+
+# MacOS file
+.AppleDouble
+.VolumeIcon.icns
+
+# Logs and databases
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+*.log
+*.db
+
+# Test coverage files
+/coverage
+
+# Storybook build files
+/storybook-static
+
+# Prettier cache
+.prettierrc.cache
+
+# Next.js specific ignores (如果使用Next.js则保留，否则可以删除)
+/.next/
+/next.config.js
+/next-env.d.ts
+
+# React specific ignores (根据实际情况调整)
+/src/**/*.spec.ts
+/src/**/*.spec.tsx
+/src/**/*.test.ts
+/src/**/*.test.tsx
