@@ -162,7 +162,7 @@ export const useHVACStore = create<HVACStore>()(
         set({ isLoading: true, error: null });
         try {
           // 模拟API调用
-          await new Promise((resolve) => setTimeout(resolve, 1000));
+          await new Promise((resolve) => setTimeout(resolve, 10000));
           const data = generateMockData();
           set({ hvacData: data, isLoading: false });
         } catch (error) {

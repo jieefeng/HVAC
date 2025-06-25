@@ -62,7 +62,7 @@ const defaultTemplates: Omit<Template, "id">[] = [
   {
     name: "经典监控模板",
     description: "基础温湿度能耗监控",
-    preview: "🌡️💧⚡",
+    preview: " ",
     isActive: true,
     createdAt: new Date(),
     updatedAt: new Date(),
@@ -106,7 +106,7 @@ const defaultTemplates: Omit<Template, "id">[] = [
   {
     name: "能耗分析模板",
     description: "专注能耗分析优化",
-    preview: "⚡📊🌍",
+    preview: " ",
     isActive: true,
     createdAt: new Date(),
     updatedAt: new Date(),
@@ -150,7 +150,7 @@ const defaultTemplates: Omit<Template, "id">[] = [
   {
     name: "系统状态模板",
     description: "全面系统运行监控",
-    preview: "🔧⚙️📈",
+    preview: " ",
     isActive: true,
     createdAt: new Date(),
     updatedAt: new Date(),

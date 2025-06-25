@@ -14,28 +14,29 @@ body {
   -moz-osx-font-smoothing: grayscale;
   background: linear-gradient(135deg, #0c1c3c 0%, #1a2942 100%);
   color: #ffffff;
-  overflow: scroll;
+  overflow: auto;
 }
 
 #root {
   /* height: 100vh; */
   width: 100vw;
+  min-height: 100vh;
 }
 
 /* 滚动条样式 */
 ::-webkit-scrollbar {
-  width: 6px;
-  height: 6px;
+  width: 8px;
+  height: 8px;
 }
 
 ::-webkit-scrollbar-track {
   background: rgba(255, 255, 255, 0.1);
-  border-radius: 3px;
+  border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb {
   background: rgba(255, 255, 255, 0.3);
-  border-radius: 3px;
+  border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
@@ -86,7 +87,41 @@ body {
 
 /* 数据大屏容器 */
 .dashboard-container {
-  height: 100vh;
-  overflow: hidden;
+  min-height: 100vh;
   position: relative;
+  padding-bottom: 40px; /* 底部留白，确保最后的组件不会被遮挡 */
+}
+
+/* 确保仪表板头部在滚动时保持可见 */
+.dashboard-header {
+  position: sticky;
+  top: 0;
+  background: rgba(12, 28, 60, 0.95);
+  backdrop-filter: blur(10px);
+  z-index: 100;
+  padding: 16px 0;
+  margin-bottom: 24px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* 仪表板内容区域 */
+.dashboard-content {
+  position: relative;
+  z-index: 1;
+}
+
+/* 仪表板项目动画 */
+.dashboard-item {
+  margin-bottom: 16px;
+  min-height: 350px;
+}
+
+.dashboard-item .ant-card {
+  height: 100%;
+  transition: all 0.3s ease;
+}
+
+.dashboard-item .ant-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
 }

@@ -1,0 +1,44 @@
+.chart-image-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.chart-image-loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 200px;
+}
+
+.chart-image-error {
+  padding: 16px;
+}
+
+.chart-image-empty {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #999;
+  font-size: 14px;
+  min-height: 200px;
+}
+
+.chart-image-img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center;
+  transition: opacity 0.3s ease;
+}
+
+.chart-image-img:hover {
+  opacity: 0.9;
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+  .chart-image-container {
+    min-height: 200px;
+  }
+}

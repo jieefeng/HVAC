@@ -1,21 +1,41 @@
 import React from "react";
-import { Layout, Menu,Form, Switch, Checkbox } from "antd";
-import { Link, useLocation } from "react-router-dom";
+import { Layout, Menu, Form, Switch, Checkbox, Button, Divider } from "antd";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import {
   DashboardOutlined,
   SettingOutlined,
   DatabaseOutlined,
   ControlOutlined,
   AppstoreOutlined,
+  BugOutlined,
+  CheckOutlined,
+  CloseOutlined,
 } from "@ant-design/icons";
 import ThemeToggle from "./ThemeToggle";
 import { useThemeStore } from "../store/themeStore";
+import { useComponentVisibilityStore } from "../store/componentVisibilityStore";
 
 const { Sider } = Layout;
 
 const Sidebar: React.FC = () => {
   const location = useLocation();
+  const navigate = useNavigate();
   const { colors } = useThemeStore();
+  const { visibility, toggleComponent, toggleAll, getVisibilityStats } =
+    useComponentVisibilityStore();
+
+  const stats = getVisibilityStats();
+  const isAllSelected = stats.visible === stats.total;
+  const isIndeterminate = stats.visible > 0 && stats.visible < stats.total;
+
+  const componentConfig = [
+    { key: "temperature", label: "温度监控", icon: "" },
+    { key: "humidity", label: "湿度监控", icon: "" },
+    { key: "energy", label: "能耗分析", icon: "" },
+    { key: "energy_pie", label: "能耗分布", icon: "" },
+    { key: "airflow", label: "空气流量", icon: "" },
+    { key: "status", label: "系统状态", icon: "" },
+  ];
 
   const menuItems = [
     {
@@ -74,40 +94,96 @@ const Sidebar: React.FC = () => {
         </div>
       </div>
 
-
-      <Form layout="vertical" style={{display: "flex", flexDirection: "column",justifyContent: "center",alignItems: "center"}}>
-              <Form.Item label="数据项配置">
-                <div style={{ marginBottom: "8px" ,color: colors.text.primary }}>
-                  <Checkbox defaultChecked /> 温度监控
-                </div>
-                <div style={{ marginBottom: "8px" ,color: colors.text.primary }}>
-                  <Checkbox defaultChecked /> 湿度监控
-                </div>
-                <div style={{ marginBottom: "8px" ,color: colors.text.primary }}>
-                  <Checkbox defaultChecked /> 能耗分析
-                </div>
-                <div style={{ marginBottom: "8px" ,color: colors.text.primary }}>
-                  <Checkbox defaultChecked /> 空气流量
-                </div>
-                <div style={{ marginBottom: "8px" ,color: colors.text.primary }}>
-                  <Checkbox /> 系统压力
-                </div>
-                <div style={{ marginBottom: "8px" ,color: colors.text.primary }}>
-                  <Checkbox /> 报警信息
-                </div>
-              </Form.Item>
-
-              </Form>
-      {/* 导航菜单 */}
-      {/* <Menu
-        mode="inline"
-        selectedKeys={[location.pathname]}
-        items={menuItems}
+      <Form
+        layout="vertical"
         style={{
-          background: "transparent",
-          border: "none",
+          padding: "0 16px",
+          display: "flex",
+          flexDirection: "column",
         }}
-      /> */}
+      >
+        <Form.Item>
+          <div
+            style={{
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "space-between",
+              marginBottom: "12px",
+            }}
+          >
+            <span
+              style={{
+                color: colors.text.primary,
+                fontWeight: "600",
+                fontSize: "14px",
+              }}
+            >
+              数据项配置
+            </span>
+            <span
+              style={{
+                color: colors.text.secondary,
+                fontSize: "12px",
+              }}
+            >
+              {/* ({stats.visible}/{stats.total}) */}
+            </span>
+          </div>
+
+          {/* 全选控制 */}
+          <div style={{ marginBottom: "12px" }}>
+            <Checkbox
+              indeterminate={isIndeterminate}
+              checked={isAllSelected}
+              onChange={(e) => toggleAll(e.target.checked)}
+              style={{ color: colors.text.primary }}
+            >
+              <span style={{ fontWeight: "500" }}>全选/取消全选</span>
+            </Checkbox>
+          </div>
+
+          <Divider
+            style={{
+              margin: "8px 0",
+              borderColor: colors.border.primary,
+            }}
+          />
+
+          {/* 组件选择列表 */}
+          {componentConfig.map((component) => (
+            <div
+              key={component.key}
+              style={{
+                marginBottom: "8px",
+                padding: "4px 0",
+                display: "flex",
+                alignItems: "center",
+                transition: "all 0.2s ease",
+              }}
+            >
+              <Checkbox
+                checked={visibility[component.key as keyof typeof visibility]}
+                onChange={() =>
+                  toggleComponent(component.key as keyof typeof visibility)
+                }
+                style={{ color: colors.text.primary }}
+              >
+                <span
+                  style={{
+                    display: "flex",
+                    alignItems: "center",
+                    gap: "6px",
+                    color: colors.text.primary,
+                  }}
+                >
+                  <span>{component.icon}</span>
+                  <span>{component.label}</span>
+                </span>
+              </Checkbox>
+            </div>
+          ))}
+        </Form.Item>
+      </Form>
 
       {/* 底部工具栏 */}
       <div
@@ -123,6 +199,17 @@ const Sidebar: React.FC = () => {
           gap: "12px",
         }}
       >
+        {/* 调试按钮 */}
+        {/* <Button
+          icon={<BugOutlined />}
+          onClick={() => navigate("/debug")}
+          block
+          size="small"
+          type={location.pathname === "/debug" ? "primary" : "default"}
+        >
+          图片调试工具
+        </Button> */}
+
         {/* 主题切换 */}
         <div
           style={{

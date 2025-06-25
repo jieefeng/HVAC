@@ -200,7 +200,7 @@ const TemplateManager: React.FC = () => {
         ]}
         style={{ height: "280px" }}
       >
-        <div style={{ height: "120px", overflow: "hidden" }}>
+        <div style={{ height: "120px", overflow: "scroll" }}>
           <p style={{ color: colors.text.secondary, marginBottom: "12px" }}>
             {template.description}
           </p>

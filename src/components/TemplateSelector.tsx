@@ -1,6 +1,5 @@
 import React from "react";
 import { Select, Card, Row, Col, Button } from "antd";
-import { AppstoreOutlined, EyeOutlined } from "@ant-design/icons";
 import { useThemeStore } from "@/store/themeStore";
 
 const { Option } = Select;
@@ -17,64 +16,63 @@ const TemplateSelector: React.FC<TemplateSelectorProps> = ({
   onTemplateChange,
 }) => {
   const templateInfo = {
+    main: {
+      name: "自定义仪表盘",
+      description: "可自定义布局的仪表盘",
+    },
     template1: {
       name: "经典监控模板",
       description: "基础的温湿度、能耗监控布局",
-      preview: "🌡️💧⚡",
     },
     template2: {
       name: "能耗分析模板",
       description: "专注能耗分析和优化建议",
-      preview: "⚡📊🌍",
     },
     template3: {
       name: "系统状态模板",
       description: "全面的系统运行状态监控",
-      preview: "🔧⚙️📈",
     },
     template4: {
-      name: "环境监控模板",
+      name: "环境监控专业版",
       description: "环境参数综合监控",
-      preview: "🌡️💨🌿",
     },
     template5: {
-      name: "趋势分析模板",
-      description: "历史数据趋势和预测分析",
-      preview: "📈📉🔮",
+      name: "能耗优化管理版",
+      description: "能效分析和优化建议",
     },
     template6: {
-      name: "设备健康模板",
-      description: "设备状态和维护管理",
-      preview: "🔧💊⚠️",
+      name: "实时监控仪表板",
+      description: "实时数据监控面板",
     },
     template7: {
-      name: "能效优化模板",
-      description: "能效分析和优化建议",
-      preview: "🔋💡📊",
+      name: "紧凑型监控面板",
+      description: "紧凑布局的监控面板",
     },
     template8: {
-      name: "报警中心模板",
-      description: "集中的报警和事件管理",
-      preview: "🚨⚠️📢",
+      name: "全景展示大屏",
+      description: "全景式数据展示",
     },
     template9: {
-      name: "数据总览模板",
-      description: "关键指标的总览展示",
-      preview: "📊📋📈",
+      name: "运维专家模式",
+      description: "专业运维监控界面",
     },
     template10: {
-      name: "自定义仪表盘",
-      description: "可自定义布局的仪表盘",
-      preview: "🎨🔧⚙️",
+      name: "节能分析专版",
+      description: "节能分析和优化",
+    },
+    template11: {
+      name: "智能控制中心",
+      description: "智能化控制管理",
     },
   };
 
-  const colors = useThemeStore()
+  const colors = useThemeStore();
 
   return (
     <div style={{ display: "flex", alignItems: "center", gap: "12px" }}>
-      <AppstoreOutlined style={{color: colors.colors.text.primary, fontSize: "16px" }} />
-      <span style={{ color: colors.colors.text.primary, fontSize: "14px" }}>模板:</span>
+      <span style={{ color: colors.colors.text.primary, fontSize: "14px" }}>
+        模板:
+      </span>
       <Select
         value={selectedTemplate}
         onChange={onTemplateChange}
@@ -108,9 +106,6 @@ const TemplateSelector: React.FC<TemplateSelectorProps> = ({
                             gap: "8px",
                           }}
                         >
-                          <span style={{ fontSize: "20px" }}>
-                            {info?.preview}
-                          </span>
                           <div>
                             <div
                               style={{ fontWeight: "bold", fontSize: "12px" }}
@@ -135,25 +130,11 @@ const TemplateSelector: React.FC<TemplateSelectorProps> = ({
           const info = templateInfo[template as keyof typeof templateInfo];
           return (
             <Option key={template} value={template}>
-              <div
-                style={{ display: "flex", alignItems: "center", gap: "8px" }}
-              >
-                <span>{info?.preview}</span>
-                <span>{info?.name}</span>
-              </div>
+              <span>{info?.name}</span>
             </Option>
           );
         })}
       </Select>
-      <Button
-        type="text"
-        icon={<EyeOutlined />}
-        style={{ color: colors.colors.text.primary, }}
-        size="small"
-
-      >
-        预览
-      </Button>
     </div>
   );
 };
